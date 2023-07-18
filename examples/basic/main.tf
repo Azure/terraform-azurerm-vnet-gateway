@@ -14,12 +14,11 @@ resource "azurerm_virtual_network" "vnet" {
 module "vgw" {
   source = "../.."
 
-  location              = "uksouth"
-  name                  = "vgw-uksouth-prod"
-  resource_group_name   = azurerm_resource_group.rg.name
-  sku                   = "VpnGw1"
-  subnet_address_prefix = "10.0.1.0/24"
-  type                  = "Vpn"
-  virtual_network_name  = azurerm_virtual_network.vnet.name
+  name                                = "vgw-uksouth-prod"
+  sku                                 = "VpnGw1"
+  subnet_address_prefix               = "10.0.1.0/24"
+  type                                = "Vpn"
+  virtual_network_name                = azurerm_virtual_network.vnet.name
+  virtual_network_resource_group_name = azurerm_virtual_network.vnet.resource_group_name
 }
 
