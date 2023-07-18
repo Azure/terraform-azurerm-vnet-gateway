@@ -1,6 +1,6 @@
 <!-- BEGIN_TF_DOCS -->
 # terraform-azurerm-vnet-gateway
-[![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/Azure/terraform-azurerm-vnet-gateway.svg)](http://isitmaintained.com/project/Azure/terraform-azurerm-vnet-gateway "Average time to resolve an issue")
+![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/Azure/terraform-azurerm-vnet-gateway.svg)](http://isitmaintained.com/project/Azure/terraform-azurerm-vnet-gateway "Average time to resolve an issue")
 [![Percentage of issues still open](http://isitmaintained.com/badge/open/Azure/terraform-azurerm-vnet-gateway.svg)](http://isitmaintained.com/project/Azure/terraform-azurerm-vnet-gateway "Percentage of issues still open")
 
 This module is designed to deploy an Azure Virtual Network Gateway and several auxillary resources associated to it.
@@ -37,6 +37,7 @@ module "vgw" {
   source  = "Azure/vnet-gateway/azure"
   version = "<version>" # change this to your desired version, https://www.terraform.io/language/expressions/version-constraints
 
+  location                            = "uksouth"
   name                                = "vgw-uksouth-prod"
   sku                                 = "VpnGw1"
   subnet_address_prefix               = "10.0.1.0/24"
@@ -77,6 +78,7 @@ module "vgw" {
   source  = "Azure/vnet-gateway/azure"
   version = "<version>" # change this to your desired version, https://www.terraform.io/language/expressions/version-constraints
 
+  location                            = "uksouth"
   name                                = "vgw-uksouth-prod"
   sku                                 = "VpnGw1"
   subnet_address_prefix               = "10.0.1.0/24"
@@ -97,6 +99,7 @@ module "vgw" {
   source  = "Azure/vnet-gateway/azure"
   version = "<version>" # change this to your desired version, https://www.terraform.io/language/expressions/version-constraints
 
+  location                            = "uksouth"
   name                                = "vgw-uksouth-prod"
   sku                                 = "VpnGw1"
   subnet_address_prefix               = "10.0.1.0/24"
@@ -142,6 +145,12 @@ No modules.
 ## Required Inputs
 
 The following input variables are required:
+
+### <a name="input_location"></a> [location](#input\_location)
+
+Description: The Azure region where the resources will be deployed.
+
+Type: `string`
 
 ### <a name="input_name"></a> [name](#input\_name)
 
@@ -393,14 +402,6 @@ map(object({
 
 Default: `{}`
 
-### <a name="input_location"></a> [location](#input\_location)
-
-Description: The Azure region where the resources will be deployed, the Virtual Network's location will be used unless specified.
-
-Type: `string`
-
-Default: `null`
-
 ### <a name="input_route_table_bgp_route_propagation_enabled"></a> [route\_table\_bgp\_route\_propagation\_enabled](#input\_route\_table\_bgp\_route\_propagation\_enabled)
 
 Description: Whether or not to enable BGP route propagation on the Route Table.
@@ -568,8 +569,6 @@ The following resources are used by this module:
 - [azurerm_subnet_route_table_association.vgw](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/subnet_route_table_association) (resource)
 - [azurerm_virtual_network_gateway.vgw](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/virtual_network_gateway) (resource)
 - [azurerm_virtual_network_gateway_connection.vgw](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/virtual_network_gateway_connection) (resource)
-- [azurerm_resource_group.vgw](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/resource_group) (data source)
-- [azurerm_virtual_network.vgw](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/virtual_network) (data source)
 
 ## Outputs
 

@@ -1,7 +1,6 @@
 variable "location" {
   type        = string
-  default     = null
-  description = "The Azure region where the resources will be deployed, the Virtual Network's location will be used unless specified."
+  description = "The Azure region where the resources will be deployed."
 
 }
 

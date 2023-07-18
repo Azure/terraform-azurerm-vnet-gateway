@@ -1,25 +1,16 @@
-data "azurerm_resource_group" "vgw" {
-  name = var.virtual_network_resource_group_name
-}
-
-data "azurerm_virtual_network" "vgw" {
-  name                = var.virtual_network_name
-  resource_group_name = data.azurerm_resource_group.vgw.name
-}
-
 resource "azurerm_subnet" "vgw" {
   address_prefixes     = [var.subnet_address_prefix]
   name                 = "GatewaySubnet"
-  resource_group_name  = data.azurerm_virtual_network.vgw.resource_group_name
-  virtual_network_name = data.azurerm_virtual_network.vgw.name
+  resource_group_name  = var.virtual_network_resource_group_name
+  virtual_network_name = var.virtual_network_name
 }
 
 resource "azurerm_route_table" "vgw" {
   count = var.route_table_creation_enabled ? 1 : 0
 
-  location                      = coalesce(var.location, data.azurerm_virtual_network.vgw.location)
+  location                      = var.location
   name                          = coalesce(var.route_table_name, "rt-${var.name}")
-  resource_group_name           = data.azurerm_virtual_network.vgw.resource_group_name
+  resource_group_name           = var.virtual_network_resource_group_name
   disable_bgp_route_propagation = !var.route_table_bgp_route_propagation_enabled
   tags = merge(var.default_tags, var.route_table_tags, (/*<box>*/ (var.tracing_tags_enabled ? { for k, v in /*</box>*/ {
     avm_git_commit           = "0978238465c76c23be1b5998c1451519b4d135c9"
@@ -48,9 +39,9 @@ resource "azurerm_public_ip" "vgw" {
   for_each = local.ip_configurations
 
   allocation_method   = each.value.public_ip.allocation_method
-  location            = coalesce(var.location, data.azurerm_virtual_network.vgw.location)
+  location            = var.location
   name                = coalesce(each.value.public_ip.name, "pip-${var.name}-${each.key}")
-  resource_group_name = data.azurerm_virtual_network.vgw.resource_group_name
+  resource_group_name = var.virtual_network_resource_group_name
   sku                 = each.value.public_ip.sku
   tags = merge(var.default_tags, each.value.public_ip.tags, (/*<box>*/ (var.tracing_tags_enabled ? { for k, v in /*</box>*/ {
     avm_git_commit           = "0978238465c76c23be1b5998c1451519b4d135c9"
@@ -64,9 +55,9 @@ resource "azurerm_public_ip" "vgw" {
 }
 
 resource "azurerm_virtual_network_gateway" "vgw" {
-  location                   = coalesce(var.location, data.azurerm_virtual_network.vgw.location)
+  location                   = var.location
   name                       = var.name
-  resource_group_name        = data.azurerm_virtual_network.vgw.resource_group_name
+  resource_group_name        = var.virtual_network_resource_group_name
   sku                        = var.sku
   type                       = var.type
   active_active              = var.vpn_active_active_enabled
@@ -153,9 +144,9 @@ resource "azurerm_virtual_network_gateway" "vgw" {
 resource "azurerm_local_network_gateway" "vgw" {
   for_each = var.local_network_gateways
 
-  location            = coalesce(var.location, data.azurerm_virtual_network.vgw.location)
+  location            = var.location
   name                = coalesce(each.value.name, "lgw-${var.name}-${each.key}")
-  resource_group_name = data.azurerm_virtual_network.vgw.resource_group_name
+  resource_group_name = var.virtual_network_resource_group_name
   address_space       = each.value.address_space
   gateway_address     = each.value.gateway_address
   gateway_fqdn        = each.value.gateway_fqdn
@@ -183,9 +174,9 @@ resource "azurerm_local_network_gateway" "vgw" {
 resource "azurerm_virtual_network_gateway_connection" "vgw" {
   for_each = local.virtual_network_gateway_connections
 
-  location                        = coalesce(var.location, data.azurerm_virtual_network.vgw.location)
+  location                        = var.location
   name                            = coalesce(each.value.name, "con-${var.name}-${each.key}")
-  resource_group_name             = data.azurerm_virtual_network.vgw.resource_group_name
+  resource_group_name             = var.virtual_network_resource_group_name
   type                            = each.value.type
   virtual_network_gateway_id      = azurerm_virtual_network_gateway.vgw.id
   authorization_key               = try(each.value.authorization_key, null)
@@ -255,7 +246,7 @@ resource "azurerm_express_route_circuit_peering" "vgw" {
 
   express_route_circuit_name    = each.value.express_route_circuit_name
   peering_type                  = each.value.peering_type
-  resource_group_name           = data.azurerm_virtual_network.vgw.resource_group_name
+  resource_group_name           = var.virtual_network_resource_group_name
   vlan_id                       = each.value.vlan_id
   ipv4_enabled                  = each.value.ipv4_enabled
   primary_peer_address_prefix   = each.value.primary_peer_address_prefix

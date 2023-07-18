@@ -36,6 +36,7 @@ module "vgw" {
   source  = "Azure/vnet-gateway/azure"
   version = "<version>" # change this to your desired version, https://www.terraform.io/language/expressions/version-constraints
 
+  location                            = "uksouth"
   name                                = "vgw-uksouth-prod"
   sku                                 = "VpnGw1"
   subnet_address_prefix               = "10.0.1.0/24"
@@ -76,6 +77,7 @@ module "vgw" {
   source  = "Azure/vnet-gateway/azure"
   version = "<version>" # change this to your desired version, https://www.terraform.io/language/expressions/version-constraints
 
+  location                            = "uksouth"
   name                                = "vgw-uksouth-prod"
   sku                                 = "VpnGw1"
   subnet_address_prefix               = "10.0.1.0/24"
@@ -96,6 +98,7 @@ module "vgw" {
   source  = "Azure/vnet-gateway/azure"
   version = "<version>" # change this to your desired version, https://www.terraform.io/language/expressions/version-constraints
 
+  location                            = "uksouth"
   name                                = "vgw-uksouth-prod"
   sku                                 = "VpnGw1"
   subnet_address_prefix               = "10.0.1.0/24"

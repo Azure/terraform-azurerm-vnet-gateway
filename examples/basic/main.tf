@@ -14,6 +14,7 @@ resource "azurerm_virtual_network" "vnet" {
 module "vgw" {
   source = "../.."
 
+  location                            = "uksouth"
   name                                = "vgw-uksouth-prod"
   sku                                 = "VpnGw1"
   subnet_address_prefix               = "10.0.1.0/24"
