@@ -191,7 +191,7 @@ resource "azurerm_virtual_network_gateway_connection" "vgw" {
   express_route_gateway_bypass    = try(each.value.express_route_gateway_bypass, null)
   ingress_nat_rule_ids            = try(each.value.ingress_nat_rule_ids, null)
   local_azure_ip_address_enabled  = try(each.value.local_azure_ip_address_enabled, null)
-  local_network_gateway_id        = try(azurerm_local_network_gateway.vgw[0][trimprefix(each.key, "lgw-")].id, each.value.local_network_gateway_id, null)
+  local_network_gateway_id        = try(azurerm_local_network_gateway.vgw[trimprefix(each.key, "lgw-")].id, each.value.local_network_gateway_id, null)
   peer_virtual_network_gateway_id = try(each.value.peer_virtual_network_gateway_id, null)
   routing_weight                  = each.value.routing_weight
   shared_key                      = try(each.value.shared_key, null)

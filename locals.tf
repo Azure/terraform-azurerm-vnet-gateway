@@ -46,7 +46,7 @@ locals {
 
 locals {
   local_network_gateways = {
-  for k, v in var.local_network_gateways : k => v if v.id != null }
+  for k, v in var.local_network_gateways : k => v if v.id == null }
 }
 
 locals {
