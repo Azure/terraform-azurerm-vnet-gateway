@@ -38,6 +38,12 @@ variable "virtual_network_resource_group_name" {
   description = "The name of the Virtual Network's Resource Group."
 }
 
+variable "express_route_circuit_resource_group_name" {
+  type = string
+  description = "The name of the ExpressRoute Circuit's Resource Group (if different to the Virtual Network Resource Group, OPTIONAL)"
+  default = null
+}
+
 variable "default_tags" {
   type        = map(string)
   default     = {}
