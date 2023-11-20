@@ -248,7 +248,7 @@ resource "azurerm_express_route_circuit_peering" "vgw" {
 
   express_route_circuit_name    = each.value.express_route_circuit_name
   peering_type                  = each.value.peering_type
-  resource_group_name           = try(var.express_route_circuit_resource_group_name, var.virtual_network_resource_group_name)
+  resource_group_name           = coalesce(each.value.resource_group_name, var.virtual_network_resource_group_name)
   vlan_id                       = each.value.vlan_id
   ipv4_enabled                  = each.value.ipv4_enabled
   primary_peer_address_prefix   = each.value.primary_peer_address_prefix
