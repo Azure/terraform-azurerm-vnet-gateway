@@ -21,7 +21,7 @@ resource "azurerm_route_table" "vgw" {
     avm_git_org              = "Azure"
     avm_git_repo             = "terraform-azurerm-vnet-gateway"
     avm_yor_name             = "vgw"
-    avm_yor_trace            = "c1642ab7-0a9b-4336-9a3b-6c0845b1cc2c"
+    avm_yor_trace            = "a02ada6f-c40e-441c-b942-a0624158e611"
   } /*<box>*/ : replace(k, "avm_", var.tracing_tags_prefix) => v } : {}) /*</box>*/))
 }
 
@@ -52,7 +52,7 @@ resource "azurerm_public_ip" "vgw" {
     avm_git_org              = "Azure"
     avm_git_repo             = "terraform-azurerm-vnet-gateway"
     avm_yor_name             = "vgw"
-    avm_yor_trace            = "c21acea0-e355-42ff-acef-1b1560f70eda"
+    avm_yor_trace            = "57ff81e7-35fb-453b-baf3-ea89f29fa0bb"
   } /*<box>*/ : replace(k, "avm_", var.tracing_tags_prefix) => v } : {}) /*</box>*/))
 }
 
@@ -74,7 +74,7 @@ resource "azurerm_virtual_network_gateway" "vgw" {
     avm_git_org              = "Azure"
     avm_git_repo             = "terraform-azurerm-vnet-gateway"
     avm_yor_name             = "vgw"
-    avm_yor_trace            = "5b7f01aa-2bd9-4123-9716-05ff85fb243e"
+    avm_yor_trace            = "918c4dd6-3235-4b43-ac65-d68795a48471"
   } /*<box>*/ : replace(k, "avm_", var.tracing_tags_prefix) => v } : {}) /*</box>*/))
   vpn_type = var.vpn_type
 
@@ -159,7 +159,7 @@ resource "azurerm_local_network_gateway" "vgw" {
     avm_git_org              = "Azure"
     avm_git_repo             = "terraform-azurerm-vnet-gateway"
     avm_yor_name             = "vgw"
-    avm_yor_trace            = "9c7a1fe5-405e-4404-bb26-619cbe36d25e"
+    avm_yor_trace            = "c3a1f160-b1c8-4222-a8f8-2bd1553ee36c"
   } /*<box>*/ : replace(k, "avm_", var.tracing_tags_prefix) => v } : {}) /*</box>*/))
 
   dynamic "bgp_settings" {
@@ -202,7 +202,7 @@ resource "azurerm_virtual_network_gateway_connection" "vgw" {
     avm_git_org              = "Azure"
     avm_git_repo             = "terraform-azurerm-vnet-gateway"
     avm_yor_name             = "vgw"
-    avm_yor_trace            = "bc00b8f3-a3f9-4a98-b927-6f337a09ef12"
+    avm_yor_trace            = "4c0be08b-0ba9-4b89-baa7-7019389bad4f"
   } /*<box>*/ : replace(k, "avm_", var.tracing_tags_prefix) => v } : {}) /*</box>*/))
   use_policy_based_traffic_selectors = try(each.value.use_policy_based_traffic_selectors, null)
 
@@ -251,11 +251,11 @@ resource "azurerm_express_route_circuit_peering" "vgw" {
   resource_group_name           = coalesce(each.value.resource_group_name, var.virtual_network_resource_group_name)
   vlan_id                       = each.value.vlan_id
   ipv4_enabled                  = each.value.ipv4_enabled
+  peer_asn                      = each.value.peer_asn
   primary_peer_address_prefix   = each.value.primary_peer_address_prefix
   route_filter_id               = each.value.route_filter_id
   secondary_peer_address_prefix = each.value.secondary_peer_address_prefix
   shared_key                    = each.value.shared_key
-  peer_asn                      = each.value.peer_asn
 
   dynamic "microsoft_peering_config" {
     for_each = each.value.microsoft_peering_config == null ? [] : ["MicrosoftPeeringConfig"]

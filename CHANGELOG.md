@@ -4,6 +4,37 @@
 
 **Merged pull requests:**
 
+- Add Warning  [\#32](https://github.com/Azure/terraform-azurerm-vnet-gateway/pull/32) ([luke-taylor](https://github.com/luke-taylor))
+
+## [v0.1.8](https://github.com/Azure/terraform-azurerm-vnet-gateway/tree/v0.1.8) (2023-11-22)
+
+**Merged pull requests:**
+
+- resource group name to locals tf [\#31](https://github.com/Azure/terraform-azurerm-vnet-gateway/pull/31) ([4ppli3d](https://github.com/4ppli3d))
+
+## [v0.1.7](https://github.com/Azure/terraform-azurerm-vnet-gateway/tree/v0.1.7) (2023-11-20)
+
+**Merged pull requests:**
+
+- peer asn and optional var for rg for er circuit [\#30](https://github.com/Azure/terraform-azurerm-vnet-gateway/pull/30) ([4ppli3d](https://github.com/4ppli3d))
+
+## [v0.1.6](https://github.com/Azure/terraform-azurerm-vnet-gateway/tree/v0.1.6) (2023-11-14)
+
+**Merged pull requests:**
+
+- number to string for primary\_peer\_address\_prefix [\#28](https://github.com/Azure/terraform-azurerm-vnet-gateway/pull/28) ([4ppli3d](https://github.com/4ppli3d))
+- ExpressRouteCircuit to ExpressRoute [\#27](https://github.com/Azure/terraform-azurerm-vnet-gateway/pull/27) ([4ppli3d](https://github.com/4ppli3d))
+
+## [v0.1.5](https://github.com/Azure/terraform-azurerm-vnet-gateway/tree/v0.1.5) (2023-11-11)
+
+**Merged pull requests:**
+
+- Fix: Update output for subnet  [\#25](https://github.com/Azure/terraform-azurerm-vnet-gateway/pull/25) ([luke-taylor](https://github.com/luke-taylor))
+- Build\(deps\): Bump github.com/Azure/terraform-module-test-helper from 0.16.0 to 0.17.0 in /test [\#24](https://github.com/Azure/terraform-azurerm-vnet-gateway/pull/24) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Build\(deps\): Bump github.com/gruntwork-io/terratest from 0.45.0 to 0.46.5 in /test [\#22](https://github.com/Azure/terraform-azurerm-vnet-gateway/pull/22) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Build\(deps\): Bump google.golang.org/grpc from 1.55.0 to 1.56.3 in /test [\#21](https://github.com/Azure/terraform-azurerm-vnet-gateway/pull/21) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Build\(deps\): Bump golang.org/x/net from 0.12.0 to 0.17.0 in /test [\#18](https://github.com/Azure/terraform-azurerm-vnet-gateway/pull/18) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Build\(deps\): Bump github.com/gruntwork-io/terratest from 0.44.0 to 0.45.0 in /test [\#17](https://github.com/Azure/terraform-azurerm-vnet-gateway/pull/17) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Build\(deps\): Bump github.com/gruntwork-io/terratest from 0.43.13 to 0.44.0 in /test [\#13](https://github.com/Azure/terraform-azurerm-vnet-gateway/pull/13) ([dependabot[bot]](https://github.com/apps/dependabot))
 
 ## [v0.1.4](https://github.com/Azure/terraform-azurerm-vnet-gateway/tree/v0.1.4) (2023-09-17)

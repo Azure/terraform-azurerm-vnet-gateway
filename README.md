@@ -1,25 +1,32 @@
 <!-- BEGIN_TF_DOCS -->
+# :warning: This repository is obsolete :warning:
+
+This repository is no longer maintained. Please use the [terraform-azurerm-avm-ptn-vnetgateway](https://github.com/Azure/terraform-azurerm-avm-ptn-vnetgateway) repository for the updated code.
+
 # terraform-azurerm-vnet-gateway
+
 [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/Azure/terraform-azurerm-vnet-gateway.svg)](http://isitmaintained.com/project/Azure/terraform-azurerm-vnet-gateway "Average time to resolve an issue")
 [![Percentage of issues still open](http://isitmaintained.com/badge/open/Azure/terraform-azurerm-vnet-gateway.svg)](http://isitmaintained.com/project/Azure/terraform-azurerm-vnet-gateway "Percentage of issues still open")
 
 This module is designed to deploy an Azure Virtual Network Gateway and several auxillary resources associated to it.
 
 ## Features
+
 - Virtual Network Gateway:
-    - VPN Gateway or ExpressRoute Gateway.
-    - Active-Active or Single.
-    - Deployment of `GatewaySubnet`.
+  - VPN Gateway or ExpressRoute Gateway.
+  - Active-Active or Single.
+  - Deployment of `GatewaySubnet`.
 - Route Table
-    - Optional deployment of Route Table on the Gateway Subnet.
+  - Optional deployment of Route Table on the Gateway Subnet.
 - Local Network Gateway:
-    - Optional deployment of `n` Local Network Gateways.
-    - Optional deployment of `n` Virtual Network Gateway Connections for Local Network Gateways.
+  - Optional deployment of `n` Local Network Gateways.
+  - Optional deployment of `n` Virtual Network Gateway Connections for Local Network Gateways.
 - ExpressRoute Circuit:
-    - Configure peering on `n` pre-provisioned ExpressRoute Circuits.
-    - Optional deployment of `n` Virtual Network Gateway Connections for ExpressRoute Circuits.
+  - Configure peering on `n` pre-provisioned ExpressRoute Circuits.
+  - Optional deployment of `n` Virtual Network Gateway Connections for ExpressRoute Circuits.
 
 ## Example
+
 ```hcl
 resource "azurerm_resource_group" "rg" {
   location = "uksouth"
