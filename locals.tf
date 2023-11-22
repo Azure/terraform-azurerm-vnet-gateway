@@ -55,7 +55,7 @@ locals {
       v.peering,
       {
         express_route_circuit_name = basename(v.id)
-        resource_group_name = basename(v.resource_group_name)
+        resource_group_name        = basename(v.resource_group_name)
       }
     )
     if v.peering != null
